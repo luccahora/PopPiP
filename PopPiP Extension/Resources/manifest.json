@@ -24,6 +24,6 @@
     "matches": ["http://*/*", "https://*/*"],
     "js": ["core.js", "content.js"],
     "run_at": "document_idle",
-    "all_frames": false
+    "all_frames": true
   }]
 }

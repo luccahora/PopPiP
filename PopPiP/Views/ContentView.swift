@@ -4,6 +4,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var extensionEnabled = false
     @Environment(\.openURL) private var openURL
+    @Environment(\.scenePhase) private var scenePhase
 
     private let extensionIdentifier = "com.poppip.PopPiP.Extension"
 
@@ -16,7 +17,7 @@ struct ContentView: View {
 
             VStack(spacing: 6) {
                 Text("PopPiP").font(.largeTitle.bold())
-                Text("Automatic Picture-in-Picture for Safari")
+                Text("app.subtitle")
                     .foregroundStyle(.secondary)
             }
 
@@ -25,9 +26,9 @@ struct ContentView: View {
                     Image(systemName: extensionEnabled ? "checkmark.circle.fill" : "exclamationmark.circle")
                         .foregroundStyle(extensionEnabled ? .green : .orange)
                     VStack(alignment: .leading, spacing: 3) {
-                        Text(extensionEnabled ? "Safari extension is enabled" : "Enable the Safari extension")
+                        Text(extensionEnabled ? "app.extension.enabled" : "app.extension.disabled")
                             .fontWeight(.semibold)
-                        Text("Open Safari Settings, choose Extensions, then enable PopPiP and grant access only to the websites you choose.")
+                        Text("app.extension.help")
                             .font(.callout).foregroundStyle(.secondary)
                     }
                     Spacer()
@@ -36,24 +37,29 @@ struct ContentView: View {
             }
 
             HStack {
-                Button("Open Safari Extension Settings") {
+                Button("app.open.safari.settings") {
                     SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionIdentifier)
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.defaultAction)
 
-                Button("Privacy") { openURL(URL(string: "https://github.com/poppip-app/PopPiP/blob/main/PRIVACY.md")!) }
-                Button("GitHub & Support") { openURL(URL(string: "https://github.com/poppip-app/PopPiP")!) }
+                Button("app.privacy") { openURL(URL(string: "https://github.com/poppip-app/PopPiP/blob/main/PRIVACY.md")!) }
+                Button("app.support") { openURL(URL(string: "https://github.com/poppip-app/PopPiP")!) }
             }
 
-            Text("No accounts. No analytics. No background network requests.")
+            Text("app.no.tracking")
                 .font(.footnote).foregroundStyle(.secondary)
 
-            Text("Version \(PopPiPVersion.displayVersion(from: Bundle.main.infoDictionary ?? [:]))")
+            Text(String(format: NSLocalizedString("app.version.label", comment: ""), PopPiPVersion.displayVersion(from: Bundle.main.infoDictionary ?? [:])))
                 .font(.caption).foregroundStyle(.tertiary)
         }
         .padding(34)
         .task { refreshExtensionState() }
+        .onChange(of: scenePhase) { phase in
+            if phase == .active {
+                refreshExtensionState()
+            }
+        }
     }
 
     private func refreshExtensionState() {

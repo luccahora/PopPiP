@@ -54,6 +54,12 @@
         return document.pictureInPictureElement === video || video.webkitPresentationMode === "picture-in-picture";
     }
 
+    function diagnoseCurrentPage() {
+        if (!enabledHere()) return { code: "site-disabled", ok: false, message: "Safari website permission is required." };
+        const video = getPlayingVideo();
+        return core.videoDiagnostic(video);
+    }
+
     async function enterPiP(reason) {
         if (!enabledHere() || pipState.automatic) return;
         const video = getPlayingVideo();
@@ -64,7 +70,7 @@
             } else if (typeof video.requestPictureInPicture === "function") {
                 await video.requestPictureInPicture();
             } else return;
-            pipState = { automatic: true, reason, video };
+            pipState = core.applyPiPTransition(pipState, { type: "enter", reason, video });
             debugLog("Entering PiP", reason);
         } catch (error) { debugLog("Unable to enter PiP", error && error.message); }
     }
@@ -80,7 +86,7 @@
             }
             debugLog("Leaving PiP", reason || pipState.reason);
         } catch (error) { debugLog("Unable to leave PiP", error && error.message); }
-        finally { pipState = { automatic: false, reason: null, video: null }; }
+        finally { pipState = core.applyPiPTransition(pipState, { type: "leave", reason }); }
     }
 
     function refreshObservation() {
@@ -111,10 +117,17 @@
     });
     window.addEventListener("focus", () => { clearTimeout(focusTimer); leavePiP("app"); });
     document.addEventListener("play", event => { if (event.target instanceof HTMLVideoElement) { cachedVideo = null; refreshObservation(); } }, true);
-    document.addEventListener("leavepictureinpicture", () => { pipState = { automatic: false, reason: null, video: null }; }, true);
+    document.addEventListener("leavepictureinpicture", () => { pipState = core.applyPiPTransition(pipState, { type: "manual-close" }); }, true);
     document.addEventListener("webkitpresentationmodechanged", event => {
-        if (event.target === pipState.video && event.target.webkitPresentationMode !== "picture-in-picture") pipState = { automatic: false, reason: null, video: null };
+        if (event.target === pipState.video && event.target.webkitPresentationMode !== "picture-in-picture") pipState = core.applyPiPTransition(pipState, { type: "manual-close" });
     }, true);
+    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message && message.type === "popPipGetStatus") {
+            sendResponse(diagnoseCurrentPage());
+            return true;
+        }
+        return false;
+    });
     browser.storage.onChanged.addListener((changes, area) => { if (area === "local" && changes.settings) readSettings(); });
     readSettings();
 })();

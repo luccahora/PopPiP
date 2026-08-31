@@ -1,0 +1,9 @@
+"app.subtitle" = "Picture-in-Picture automático para Safari";
+"app.extension.enabled" = "A extensão do Safari está ativada";
+"app.extension.disabled" = "Ative a extensão do Safari";
+"app.extension.help" = "Abra as Configurações do Safari, escolha Extensões, ative o PopPiP e conceda acesso apenas aos sites que você escolher.";
+"app.open.safari.settings" = "Abrir configurações da extensão do Safari";
+"app.privacy" = "Privacidade";
+"app.support" = "GitHub e suporte";
+"app.no.tracking" = "Sem contas. Sem analítica. Sem requisições em segundo plano.";
+"app.version.label" = "Versão %@";

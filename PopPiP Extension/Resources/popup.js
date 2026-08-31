@@ -14,7 +14,10 @@
             disabled: "Disabled on this website", openWebsite: "Open a website to configure PopPiP",
             saved: "Saved locally.", saveError: "Unable to save settings.",
             accessError: "Safari did not provide access to the current website.",
-            defaults: "Using default settings."
+            defaults: "Using default settings.",
+            ready: "PopPiP is ready on this player.", noVideo: "No video is playing.",
+            permissionRequired: "Website permission is required in Safari.",
+            unsupportedPlayer: "PiP is unavailable on this player."
         },
         "pt-BR": {
             subtitle: "Picture-in-Picture automático para Safari", languageHeading: "Idioma",
@@ -28,7 +31,10 @@
             disabled: "Desativado neste site", openWebsite: "Abra um site para configurar o PopPiP",
             saved: "Salvo localmente.", saveError: "Não foi possível salvar as configurações.",
             accessError: "O Safari não forneceu acesso ao site atual.",
-            defaults: "Usando as configurações padrão."
+            defaults: "Usando as configurações padrão.",
+            ready: "O PopPiP está pronto para este player.", noVideo: "Nenhum vídeo está reproduzindo.",
+            permissionRequired: "É necessário permitir o site no Safari.",
+            unsupportedPlayer: "O PiP não está disponível neste player."
         }
     });
     const settingKeys = ["enabled", "tabSwitch", "appSwitch", "viewportExit", "enableAllSites", "debug"];
@@ -39,7 +45,16 @@
     let settings = core.mergeSettings();
 
     function text(key) { return translations[settings.language][key]; }
-    function setMessage(key) { message.textContent = key ? text(key) : ""; }
+    function setMessage(key) { message.textContent = key ? (translations[settings.language][key] || key) : ""; }
+    function diagnosticText(code) {
+        switch (code) {
+            case "ready": return text("ready");
+            case "no-video": return text("noVideo");
+            case "site-disabled": return text("permissionRequired");
+            case "unsupported-player": return text("unsupportedPlayer");
+            default: return text("noVideo");
+        }
+    }
     function translateInterface() {
         document.documentElement.lang = settings.language;
         document.querySelectorAll("[data-i18n]").forEach(element => {
@@ -56,30 +71,65 @@
         document.getElementById("enable-site").disabled = !hostname;
         document.getElementById("disable-site").disabled = !hostname;
     }
+    async function refreshStatus() {
+        try {
+            const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+            const parsed = tab && tab.url ? new URL(tab.url) : null;
+            if (!parsed || !["http:", "https:"].includes(parsed.protocol)) {
+                status.textContent = text("openWebsite");
+                setMessage("");
+                return;
+            }
+            hostname = core.normalizeHostname(parsed.hostname);
+            render();
+            if (!core.isSiteEnabled(hostname, settings)) {
+                status.textContent = text("permissionRequired");
+                setMessage("permissionRequired");
+                return;
+            }
+            try {
+                const response = await browser.tabs.sendMessage(tab.id, { type: "popPipGetStatus" });
+                const code = response && response.code ? response.code : "no-video";
+                status.textContent = diagnosticText(code);
+                if (code === "ready") setMessage("");
+                else if (code === "site-disabled") setMessage("permissionRequired");
+                else if (code === "unsupported-player") setMessage("unsupportedPlayer");
+                else setMessage("noVideo");
+            } catch (_) {
+                status.textContent = text("noVideo");
+                setMessage("noVideo");
+            }
+        } catch (_) {
+            setMessage("accessError");
+            status.textContent = text("openWebsite");
+        }
+    }
     async function save() {
         try { await browser.storage.local.set({ settings }); setMessage("saved"); }
         catch (_) { setMessage("saveError"); }
         render();
     }
-    try {
-        const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
-        const parsed = tab && tab.url ? new URL(tab.url) : null;
-        if (parsed && (parsed.protocol === "http:" || parsed.protocol === "https:")) hostname = core.normalizeHostname(parsed.hostname);
-    } catch (_) { setMessage("accessError"); }
     try { const stored = await browser.storage.local.get("settings"); settings = core.mergeSettings(stored.settings); }
     catch (_) { setMessage("defaults"); }
-    for (const key of settingKeys) controls[key].addEventListener("change", () => { settings[key] = controls[key].checked; save(); });
+    for (const key of settingKeys) controls[key].addEventListener("change", () => {
+        settings[key] = controls[key].checked; save();
+        refreshStatus();
+    });
     document.getElementById("language").addEventListener("change", event => {
         settings.language = event.target.value === "pt-BR" ? "pt-BR" : "en";
         save();
+        refreshStatus();
     });
     document.getElementById("enable-site").addEventListener("click", () => {
         settings.enabledSites = [...new Set([...settings.enabledSites, hostname])];
         settings.disabledSites = settings.disabledSites.filter(item => item !== hostname); save();
+        refreshStatus();
     });
     document.getElementById("disable-site").addEventListener("click", () => {
         settings.disabledSites = [...new Set([...settings.disabledSites, hostname])];
         settings.enabledSites = settings.enabledSites.filter(item => item !== hostname); save();
+        refreshStatus();
     });
     render();
+    refreshStatus();
 })();

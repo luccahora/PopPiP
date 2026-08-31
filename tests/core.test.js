@@ -28,6 +28,22 @@ test("prefers the visible player when two videos are playing", () => {
     const visible = video();
     assert.equal(core.selectPlayingVideo([offscreen, visible], viewport), visible);
 });
+test("supports Safari PiP APIs for compatible players", () => {
+    const video = { webkitSupportsPresentationMode: true, webkitSetPresentationMode() {}, requestPictureInPicture: null };
+    assert.equal(core.supportsPictureInPicture(video), true);
+    assert.equal(core.videoDiagnostic(video).code, "ready");
+});
+
+test("reports unsupported players cleanly", () => {
+    const video = { paused: false, ended: false, currentTime: 10, readyState: 4, requestPictureInPicture: null };
+    assert.equal(core.supportsPictureInPicture(video), false);
+    assert.equal(core.videoDiagnostic(video).code, "unsupported-player");
+});
+
+test("diagnostic handles a missing video", () => {
+    assert.equal(core.videoDiagnostic(null).code, "no-video");
+});
+
 test("automatic PiP closes only for its own reason", () => {
     const state = { automatic: true, reason: "tab" };
     assert.equal(core.shouldLeaveAutomaticPiP(state, "tab"), true);

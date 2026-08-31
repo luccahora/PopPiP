@@ -24,7 +24,8 @@ does not scrape service metadata.
 ## Demo
 
 Demo media is planned for the first release. A placeholder for screenshots is
-kept in the App Store metadata checklist.
+kept in the App Store metadata checklist. See also the Safari compatibility
+checklist in [docs/SAFARI_COMPATIBILITY_CHECKLIST.md](docs/SAFARI_COMPATIBILITY_CHECKLIST.md).
 
 ## Installation
 
