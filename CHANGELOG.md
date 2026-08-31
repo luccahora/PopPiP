@@ -4,7 +4,7 @@ All notable changes to PopPiP will be documented in this file.
 
 The format is based on Keep a Changelog, and this project currently documents work in progress before any public release.
 
-## [Unreleased]
+## [1.0.0] - 2026-08-31
 
 ### Added
 
@@ -15,10 +15,12 @@ The format is based on Keep a Changelog, and this project currently documents wo
 - Per-site allowlist and denylist controls with local-only settings.
 - Local-only privacy-first behavior with no analytics, telemetry, or remote backend.
 - Node-based validation tests for PiP selection and site logic.
+- GitHub release automation for building and packaging the app for public distribution.
 
 ### Changed
 
 - Documentation was expanded to describe supported behavior, privacy expectations, and release planning.
+- The project is now aligned with a public GitHub release flow for the initial launch.
 
 ### Security
 
