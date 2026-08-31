@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="popup.css"><title>PopPiP</title></head>
+<body><main><header><h1>PopPiP</h1><p data-i18n="subtitle">Automatic Picture-in-Picture for Safari</p></header>
+<p id="site-status" class="status" role="status">Checking this website…</p>
+<section aria-labelledby="language-heading"><h2 id="language-heading" data-i18n="languageHeading">Language</h2>
+<label class="select-row"><span data-i18n="languageLabel">Interface language</span><select id="language" aria-label="Interface language"><option value="en">English</option><option value="pt-BR">Português (Brasil)</option></select></label></section>
+<section aria-labelledby="behavior"><h2 id="behavior" data-i18n="settings">Settings</h2>
+<label><input id="enabled" type="checkbox"> <span data-i18n="enable">Enable PopPiP</span></label>
+<label><input id="tabSwitch" type="checkbox"> <span data-i18n="tabSwitch">PiP on tab switch</span></label>
+<label><input id="appSwitch" type="checkbox"> <span data-i18n="appSwitch">PiP on app switch</span></label>
+<label><input id="viewportExit" type="checkbox"> <span data-i18n="viewportExit">PiP when video leaves viewport</span></label></section>
+<section aria-labelledby="website"><h2 id="website" data-i18n="websiteAccess">Website access</h2><div class="buttons"><button id="enable-site" data-i18n="enableSite">Enable on this website</button><button id="disable-site" class="secondary" data-i18n="disableSite">Disable on this website</button></div>
+<label><input id="enableAllSites" type="checkbox"> <span data-i18n="enableAll">Enable on all permitted websites</span></label><p class="hint" data-i18n="safariAccess">Safari controls which websites the extension may access.</p></section>
+<details><summary data-i18n="advanced">Advanced</summary><label><input id="debug" type="checkbox"> <span data-i18n="debug">Debug logging</span></label></details>
+<p id="message" class="hint" role="status"></p></main><script src="core.js"></script><script src="popup.js"></script></body></html>

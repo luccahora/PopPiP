@@ -1,0 +1,16 @@
+.DS_Store
+DerivedData/
+DerivedDataSigned/
+build/
+*.xcuserstate
+xcuserdata/
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+*.p12
+*.cer
+*.provisionprofile
+*.mobileprovision
+AuthKey_*.p8
+.env
+node_modules/

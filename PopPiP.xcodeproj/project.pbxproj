@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B10000000000000000000001 /* PopPiPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000001 /* PopPiPApp.swift */; };
+		B10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000002 /* ContentView.swift */; };
+		B10000000000000000000003 /* PopPiPVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000003 /* PopPiPVersion.swift */; };
+		B10000000000000000000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000004 /* Assets.xcassets */; };
+		B10000000000000000000005 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10000000000000000000010 /* SafariServices.framework */; };
+		B10000000000000000000006 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000005 /* SafariWebExtensionHandler.swift */; };
+		B10000000000000000000007 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000011 /* manifest.json */; };
+		B10000000000000000000008 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10000000000000000000010 /* SafariServices.framework */; };
+		B10000000000000000000009 /* PopPiP Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D10000000000000000000002 /* PopPiP Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B1000000000000000000000A /* PopPiPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000009 /* PopPiPTests.swift */; };
+		B1000000000000000000000B /* PopPiP.app in Frameworks */ = {isa = PBXBuildFile; fileRef = D10000000000000000000001 /* PopPiP.app */; };
+		B1000000000000000000000C /* core.js in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000012 /* core.js */; };
+		B1000000000000000000000D /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000013 /* content.js */; };
+		B1000000000000000000000E /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000014 /* popup.html */; };
+		B1000000000000000000000F /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000015 /* popup.js */; };
+		B10000000000000000000010 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000016 /* popup.css */; };
+		B10000000000000000000011 /* images in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000017 /* images */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E10000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10000000000000000000002;
+			remoteInfo = "PopPiP Extension";
+		};
+		E10000000000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A10000000000000000000001;
+			remoteInfo = PopPiP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F20000000000000000000001 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B10000000000000000000009 /* PopPiP Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C10000000000000000000001 /* PopPiPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPiPApp.swift; sourceTree = "<group>"; };
+		C10000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C10000000000000000000003 /* PopPiPVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPiPVersion.swift; sourceTree = "<group>"; };
+		C10000000000000000000004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C10000000000000000000005 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		C10000000000000000000007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C10000000000000000000008 /* PopPiP_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PopPiP_Extension.entitlements; sourceTree = "<group>"; };
+		C10000000000000000000009 /* PopPiPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPiPTests.swift; sourceTree = "<group>"; };
+		C1000000000000000000000A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1000000000000000000000B /* PopPiP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PopPiP.entitlements; sourceTree = "<group>"; };
+		C10000000000000000000010 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		C10000000000000000000011 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		C10000000000000000000012 /* core.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = core.js; sourceTree = "<group>"; };
+		C10000000000000000000013 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		C10000000000000000000014 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		C10000000000000000000015 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		C10000000000000000000016 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		C10000000000000000000017 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		D10000000000000000000001 /* PopPiP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopPiP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10000000000000000000002 /* PopPiP Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PopPiP Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10000000000000000000003 /* PopPiPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopPiPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F30000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000005 /* SafariServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F30000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000008 /* SafariServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F30000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000000000000000000000B /* PopPiP.app in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		85CAC2973045E5E50074C77D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000010 /* SafariServices.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		F40000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				F40000000000000000000002 /* PopPiP */,
+				F40000000000000000000003 /* PopPiP Extension */,
+				F40000000000000000000004 /* Shared */,
+				F40000000000000000000005 /* PopPiPTests */,
+				F40000000000000000000006 /* Products */,
+				85CAC2973045E5E50074C77D /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		F40000000000000000000002 /* PopPiP */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000001 /* PopPiPApp.swift */,
+				F40000000000000000000007 /* Views */,
+				C10000000000000000000004 /* Assets.xcassets */,
+				C1000000000000000000000A /* Info.plist */,
+				C1000000000000000000000B /* PopPiP.entitlements */,
+			);
+			path = PopPiP;
+			sourceTree = "<group>";
+		};
+		F40000000000000000000003 /* PopPiP Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000005 /* SafariWebExtensionHandler.swift */,
+				F40000000000000000000008 /* Resources */,
+				C10000000000000000000007 /* Info.plist */,
+				C10000000000000000000008 /* PopPiP_Extension.entitlements */,
+			);
+			path = "PopPiP Extension";
+			sourceTree = "<group>";
+		};
+		F40000000000000000000004 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000003 /* PopPiPVersion.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F40000000000000000000005 /* PopPiPTests */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000009 /* PopPiPTests.swift */,
+			);
+			path = PopPiPTests;
+			sourceTree = "<group>";
+		};
+		F40000000000000000000006 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D10000000000000000000001 /* PopPiP.app */,
+				D10000000000000000000002 /* PopPiP Extension.appex */,
+				D10000000000000000000003 /* PopPiPTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F40000000000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000002 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F40000000000000000000008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C10000000000000000000011 /* manifest.json */,
+				C10000000000000000000012 /* core.js */,
+				C10000000000000000000013 /* content.js */,
+				C10000000000000000000014 /* popup.html */,
+				C10000000000000000000015 /* popup.js */,
+				C10000000000000000000016 /* popup.css */,
+				C10000000000000000000017 /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000001 /* PopPiP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80000000000000000000002 /* Build configuration list for PBXNativeTarget "PopPiP" */;
+			buildPhases = (
+				F50000000000000000000001 /* Sources */,
+				F30000000000000000000001 /* Frameworks */,
+				F60000000000000000000001 /* Resources */,
+				F20000000000000000000001 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E20000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = PopPiP;
+			productName = PopPiP;
+			productReference = D10000000000000000000001 /* PopPiP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A10000000000000000000002 /* PopPiP Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80000000000000000000003 /* Build configuration list for PBXNativeTarget "PopPiP Extension" */;
+			buildPhases = (
+				F50000000000000000000002 /* Sources */,
+				F30000000000000000000002 /* Frameworks */,
+				F60000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PopPiP Extension";
+			productName = PopPiP_Extension;
+			productReference = D10000000000000000000002 /* PopPiP Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A10000000000000000000003 /* PopPiPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F80000000000000000000004 /* Build configuration list for PBXNativeTarget "PopPiPTests" */;
+			buildPhases = (
+				F50000000000000000000003 /* Sources */,
+				F30000000000000000000003 /* Frameworks */,
+				F60000000000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E20000000000000000000002 /* PBXTargetDependency */,
+			);
+			name = PopPiPTests;
+			productName = PopPiPTests;
+			productReference = D10000000000000000000003 /* PopPiPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2660;
+				LastUpgradeCheck = 2660;
+				TargetAttributes = {
+					A10000000000000000000001 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					A10000000000000000000002 = {
+						CreatedOnToolsVersion = 26.6;
+					};
+					A10000000000000000000003 = {
+						CreatedOnToolsVersion = 26.6;
+						TestTargetID = A10000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = F80000000000000000000001 /* Build configuration list for PBXProject "PopPiP" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F40000000000000000000001;
+			productRefGroup = F40000000000000000000006 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10000000000000000000001 /* PopPiP */,
+				A10000000000000000000002 /* PopPiP Extension */,
+				A10000000000000000000003 /* PopPiPTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F60000000000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000004 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F60000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000007 /* manifest.json in Resources */,
+				B1000000000000000000000C /* core.js in Resources */,
+				B1000000000000000000000D /* content.js in Resources */,
+				B1000000000000000000000E /* popup.html in Resources */,
+				B1000000000000000000000F /* popup.js in Resources */,
+				B10000000000000000000010 /* popup.css in Resources */,
+				B10000000000000000000011 /* images in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F60000000000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F50000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000001 /* PopPiPApp.swift in Sources */,
+				B10000000000000000000002 /* ContentView.swift in Sources */,
+				B10000000000000000000003 /* PopPiPVersion.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F50000000000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10000000000000000000006 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F50000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1000000000000000000000A /* PopPiPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E20000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10000000000000000000002 /* PopPiP Extension */;
+			targetProxy = E10000000000000000000001 /* PBXContainerItemProxy */;
+		};
+		E20000000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A10000000000000000000001 /* PopPiP */;
+			targetProxy = E10000000000000000000002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F70000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F70000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F70000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PopPiP/PopPiP.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P4CPLDK2NR;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PopPiP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		F70000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PopPiP/PopPiP.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = P4CPLDK2NR;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PopPiP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		F70000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "PopPiP Extension/PopPiP_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P4CPLDK2NR;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "PopPiP Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiP.Extension;
+				PRODUCT_NAME = "PopPiP Extension";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F70000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "PopPiP Extension/PopPiP_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P4CPLDK2NR;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "PopPiP Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiP.Extension;
+				PRODUCT_NAME = "PopPiP Extension";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F70000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopPiP.app/Contents/MacOS/PopPiP";
+			};
+			name = Debug;
+		};
+		F70000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.poppip.PopPiPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopPiP.app/Contents/MacOS/PopPiP";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F80000000000000000000001 /* Build configuration list for PBXProject "PopPiP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F70000000000000000000001 /* Debug */,
+				F70000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F80000000000000000000002 /* Build configuration list for PBXNativeTarget "PopPiP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F70000000000000000000003 /* Debug */,
+				F70000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F80000000000000000000003 /* Build configuration list for PBXNativeTarget "PopPiP Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F70000000000000000000005 /* Debug */,
+				F70000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F80000000000000000000004 /* Build configuration list for PBXNativeTarget "PopPiPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F70000000000000000000007 /* Debug */,
+				F70000000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F10000000000000000000001 /* Project object */;
+}
