@@ -1,0 +1,76 @@
+name: Bug report
+description: Report a reproducible issue in PopPiP.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please keep it focused and include enough detail for reproduction.
+
+  - type: input
+    id: version
+    attributes:
+      label: PopPiP version
+      placeholder: 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: macOS 14.5
+    validations:
+      required: true
+
+  - type: input
+    id: safari
+    attributes:
+      label: Safari version
+      placeholder: Safari 17.5
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Website or browser context
+      placeholder: YouTube, Twitch, Vimeo, or other URL
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open Safari
+        2. Visit ...
+        3. Start a video
+        4. Switch tabs or apps
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, screenshots, or console output
+      description: Add debug logs if available. Redact sensitive information.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Include any relevant website permissions, extension state, or workaround information.
