@@ -36,8 +36,6 @@ Minimal. Private. Safari-native.
 
 PopPiP helps videos feel like a native part of your workflow. Start a clip, switch tabs, jump to another app, and keep the content in view without interrupting the work you were already doing.
 
-A public demo GIF or screenshots are not included yet. The right place for them is `docs/assets/` or a dedicated `docs/demo.gif` when the first public assets are ready.
-
 ## Why PopPiP?
 
 Picture-in-Picture is great, but many players and websites do not make it easy to trigger or manage consistently. PopPiP keeps that experience lightweight: detect the active video, pick the right one, and move it into PiP when the page loses focus or the user leaves the active context.
@@ -97,17 +95,17 @@ Notes:
 
 ### Users
 
-Prebuilt end-user releases are not published in this repository yet. The project is currently under active development, and the intended distribution path is a signed macOS app and, potentially, the Mac App Store.
+The project is prepared for GitHub Releases as the public distribution channel for the macOS app. A release is published from a tagged version, and the asset is expected to be a signed or notarized `.app`/zip bundle prepared for end-user installation.
 
 Once a release is available, the expected flow is:
 
-1. Download the signed build from the project release page or the App Store channel.
+1. Download the signed build from the GitHub Releases page.
 2. Launch the app.
 3. In Safari, go to Settings → Extensions and enable PopPiP.
 4. Grant Safari website access to the sites you want to use.
 5. Open the PopPiP toolbar popup and enable the site.
 
-A Mac App Store version is planned, but it is not currently advertised as released in this repository.
+A Mac App Store version remains a future distribution option, but the GitHub release flow is the current public channel for the initial launch.
 
 ### Developers
 

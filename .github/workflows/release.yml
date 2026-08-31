@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    name: Build and publish PopPiP release
+    runs-on: macos-14
+
+    env:
+      APP_NAME: PopPiP
+      PROJECT_PATH: PopPiP.xcodeproj
+      SCHEME: PopPiP
+      CONFIGURATION: Release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine app version
+        id: version
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "push" ] && [ -n "${GITHUB_REF_NAME:-}" ]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            VERSION="$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' PopPiP/Info.plist)"
+          fi
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Build macOS app
+        shell: bash
+        run: |
+          xcodebuild -project "$PROJECT_PATH" -scheme "$SCHEME" -configuration "$CONFIGURATION" \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build
+
+      - name: Package release artifact
+        shell: bash
+        run: |
+          APP_PATH="$(find DerivedData -path '*Build/Products/Release/PopPiP.app' -type d | head -n 1)"
+          if [ -z "$APP_PATH" ]; then
+            echo "PopPiP.app not found in the Release build output."
+            exit 1
+          fi
+
+          mkdir -p release
+          cp -R "$APP_PATH" "release/${APP_NAME}.app"
+          ditto -c -k --keepParent "release/${APP_NAME}.app" "release/${APP_NAME}-${{ steps.version.outputs.version }}.zip"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event_name == 'push' && github.ref_name || format('v{0}', steps.version.outputs.version) }}
+          files: release/*.zip
+          generate_release_notes: true
